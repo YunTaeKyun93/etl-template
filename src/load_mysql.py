@@ -1,11 +1,11 @@
 import pymysql
 from src.utils import log
-from config.settings import DB_CONFIG
+from config.settings import MYSQL_CONFIG
 
-def load_to_db(df):
+def load_to_mysql(df):
     log("🗄️ Load 시작 — DB 적재")
 
-    conn = pymysql.connect(**DB_CONFIG)  # type: ignore
+    conn = pymysql.connect(**MYSQL_CONFIG)  # type: ignore
     cur = conn.cursor()
 
     cols = ", ".join(df.columns)
