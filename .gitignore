@@ -1,6 +1,6 @@
 __pycache__/
 .env
-.env.*
+
 
 # Ignore all files inside these folders
 data/raw/*
