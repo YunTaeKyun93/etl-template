@@ -26,6 +26,52 @@ MYSQL_CONFIG = {
     "db": os.getenv("MYSQL_DB"),
     "charset": "utf8mb4",
 }
+MYSQL_TABLE = os.getenv("MYSQL_TABLE")
+
+
+
+# ---------------------------------------------------------
+# 📌 데이터 전처리 과정 
+# ---------------------------------------------------------
+
+SOURCE_COLS = [
+    "ID", "나이", "키(cm)", "몸무게(kg)", "BMI", "시력", "충치",
+    "공복 혈당", "혈압", "중성 지방", "혈청 크레아티닌", "콜레스테롤",
+    "고밀도지단백", "저밀도지단백", "헤모글로빈", "요 단백", "간 효소율", "label"
+]
+
+TARGET_COLS = [
+    "id", "age", "height", "weight", "BMI", "sight", "cavity",
+    "FPG", "blood_pressure", "TG", "SCR", "cholesterol",
+    "HDL", "LDL", "Hb", "PRO", "LFT", "label"
+]
+
+
+COLUMN_MAP = dict(zip(SOURCE_COLS, TARGET_COLS))
+
+ZERO_TO_NAN_COLS = [
+    "sight", "FPG", "blood_pressure", "TG", "SCR",
+    "cholesterol", "Hb", "HDL", "LDL", "LFT"
+]
+RANGE_RULES = {
+    "age": (1, 120),
+    "height": (50, 250),
+    "weight": (20, 250),
+    "BMI": (10, 80),
+    "sight": (0, 2.5),
+    "FPG": (40, 400),
+    "blood_pressure": (30, 250),
+    "TG": (10, 1000),
+    "SCR": (0.2, 3.0),
+    "cholesterol": (50, 400),
+    "HDL": (10, 120),
+    "LDL": (40, 300),
+    "Hb": (5, 20),
+    "PRO": (0, 5),
+    "LFT": (0.1, 10),
+}
+
+
 
 # ---------------------------------------------------------
 # 📌 MongoDB 설정

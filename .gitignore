@@ -1,5 +1,13 @@
+__pycache__/
+.env
+.env.*
+
+# Ignore all files inside these folders
 data/raw/*
 data/processed/*
 logs/*
-.env
-__pycache__/
+
+# BUT keep the folder structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!logs/.gitkeep
